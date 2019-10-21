@@ -258,7 +258,7 @@ INCLUDEPATH += . \
     src \
     src/config \
     src/ASF/common/boards \
-    ...
+    <... more paths in list ...>
     src/ASF/thirdparty/fatfs/fatfs-r0.13a \
     /usr/lib/gcc/arm-none-eabi/7.3.0/include/
 
@@ -266,10 +266,9 @@ SOURCES += src/ASF/common/components/memory/sd_mmc/sd_mmc.c \
     src/ASF/common/components/memory/sd_mmc/sd_mmc_mem.c \
     src/ASF/common/services/clock/same70/sysclk.c \
     src/ASF/common/services/delay/sam/cycle_counter.c \
-    ...
+    <... more files in list ...>
     src/ASF/sam/services/flash_efc.c \
     src/main.c
-
 
 HEADERS += \
     src/ASF/common/boards/board.h \
@@ -277,7 +276,7 @@ HEADERS += \
     src/ASF/common/components/memory/sd_mmc/sd_mmc_mem.h \
     src/ASF/common/components/memory/sd_mmc/sd_mmc_protocol.h \
     src/ASF/common/services/clock/same70/genclk.h \
-    ...
+    <... more files in list ...>
     src/config/conf_sd_mmc_mci.h \
     src/config/conf_uart_serial.h \
     src/definitions/atsame70q21.h \
@@ -292,7 +291,7 @@ DISTFILES += src/ASF/sam/utils/linker_scripts/same70/same70q21/gcc/flash.ld
 * FLASH ```embmake -t FLASH -p mypro.pro```
 
 ## Using in QtCreator
-* In QtCreator's tab "Projects" at "Build&Run" You should define custom process steps for BUILD, CLEAN and RUN. For RUN Step I am using FLASH target.
+* In QtCreator tab "Projects" at "Build&Run" You should define custom process steps for BUILD, CLEAN and RUN. For RUN Step I am using FLASH target.
 * Example of definition custom build step with embmake:
   ```
   Command: /usr/bin/embmake
