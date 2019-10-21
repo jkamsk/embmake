@@ -298,3 +298,6 @@ DISTFILES += src/ASF/sam/utils/linker_scripts/same70/same70q21/gcc/flash.ld
   Arguments: -t BUILD -p mypro.pro
   Working directory: %{sourceDir}
   ```
+
+## License
+* GPL
