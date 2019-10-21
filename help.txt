@@ -1,7 +1,7 @@
 embmake 0.3
 usage: embmake [-p project.pro] [-t BUILD]
- -p <project.pro>   -   specifies QtCreator project file
- -t TARGET          -   specified target to run, Must be defined
+ -p <project.pro>   -   specify QtCreator project file
+ -t TARGET          -   specify target to run, Must be defined
                         in TARGETS collection with or without !prefix
  -snmd              -   show 'not modified' messages
  -armsize           -   ARM calc mode, RAM & FLASH size and % of usage
