@@ -26,8 +26,8 @@ HEADERS += \
     qtplist.h
 
 DISTFILES += \
-    help.txt \
-    readme.md
+    README.md \
+    help.txt
 
 RESOURCES += \
     resources.qrc
