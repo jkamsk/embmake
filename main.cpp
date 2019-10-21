@@ -3,9 +3,13 @@
 #include <qtp.h>
 #include <iostream>
 #include <QFile>
+#include <config.h>
 
 #define ARMSIZE 0
 #define AVRSIZE 1
+
+QString armnoneeabisize_binpath;
+QString avrsize_binpath;
 
 void message(QString err)
 {
@@ -68,9 +72,9 @@ int calcArmAvrSize(QString sfile, QString flashsize, QString ramsize, int type)
     QStringList args;
     args.append(sfile);
     if (type == ARMSIZE)
-        getSize.start("/usr/bin/arm-none-eabi-size", args);
+        getSize.start(armnoneeabisize_binpath, args);
     else if (type == AVRSIZE)
-        getSize.start("/usr/bin/avr-size", args);
+        getSize.start(avrsize_binpath, args);
     getSize.waitForFinished();
     int res = getSize.exitCode();
     if (res != 0)
@@ -168,10 +172,12 @@ int main(int argc, char *argv[])
     QString armsizeFlashSize;
     QString armsizeRamSize;
     bool showNotModified = false;
+    armnoneeabisize_binpath = ARM_NONE_EABI_SIZE;
+    avrsize_binpath = AVR_SIZE;
     for (int a=0;a<sws.count();a++)
     {
         tmp = sws.at(a);
-        if (tmp == "-h")
+        if (tmp == "-h" || tmp == "-help" || tmp == "--h" || tmp == "--help" || tmp == "\?" || tmp == "/?" || tmp == "?")
             help = true;
         else if (tmp == "-p")
         {
@@ -200,15 +206,43 @@ int main(int argc, char *argv[])
                 a++;
                 continue;
             }
-        }
+        }        
         else if (tmp == "-dcmd")
         {
             Qtp::DCMD = true;
+        }
+        else if (tmp == "-armsize_path")
+        {
+            if (a+1 >= sws.count())
+            {
+                error("arm-none-eabi-size path not specified");
+                return -15;
+            }
+            else
+            {
+                armnoneeabisize_binpath = sws.at(a+1);
+                a++;
+                continue;
+            }
         }
         else if (tmp == "-armsize")
         {
             calcsize = true;
             sizetype = ARMSIZE;
+        }
+        else if (tmp == "-avrsize_path")
+        {
+            if (a+1 >= sws.count())
+            {
+                error("avr-size path not specified");
+                return -16;
+            }
+            else
+            {
+                avrsize_binpath = sws.at(a+1);
+                a++;
+                continue;
+            }
         }
         else if (tmp == "-avrsize")
         {

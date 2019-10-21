@@ -1,14 +1,16 @@
-embmake 0.2 by jkam.mail@gmail.com
+embmake 0.3
 usage: embmake [-p project.pro] [-t BUILD]
  -p <project.pro>   -   specifies QtCreator project file
- -t TARGET          -   specifiet target to run, Must be defined
+ -t TARGET          -   specified target to run, Must be defined
                         in TARGETS collection with or without !prefix
  -snmd              -   show 'not modified' messages
  -armsize           -   ARM calc mode, RAM & FLASH size and % of usage
-                        need /usr/bin/arm-none-eabi-size
+                        need /usr/bin/arm-none-eabi-size (default path)
+ -armsize_binpath   -   set armsize binary path (if differ from default)
  -avrsize           -   AVR calc mode, RAM & FLASH size and % of usage
-                        need /usr/bin/avr-size
+                        need /usr/bin/avr-size (default path)
                         [needed params -sfile -sflash -sram]
+ -avrsize_binpath   -   set avrsize binary path (if differ from default)
  -sfile             -   file with calculated code
  -sflash            -   size of flash/code area
  -sram              -   size of ram area

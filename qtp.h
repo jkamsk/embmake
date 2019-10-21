@@ -21,7 +21,6 @@
 
 class Qtp;
 typedef boost::shared_ptr<Qtp> QtpPtr;
-//typedef QStringList (*BuildStepFunction)(QtpPtr);
 class Qtp
 {
     QDateTime Stamp;

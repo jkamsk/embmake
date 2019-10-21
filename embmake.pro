@@ -21,6 +21,7 @@ SOURCES += main.cpp \
 
 HEADERS += \
     buildstep.h \
+    config.h \
     qtp.h \
     qtplist.h
 

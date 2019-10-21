@@ -501,6 +501,8 @@ void Qtp::readfile()
                 continue;
             if (field.contains("/_/"))
                 field.replace("/_/", " ");
+            if (field.contains("<>"))
+                field.replace("<>", " ");
             if (list.get() == 0L && stage == QTP_SG_NO && !inMultiLine)
             {
                 list = collection(field, true);
@@ -538,6 +540,8 @@ void Qtp::readfile()
                         {
                         case QTP_OP_EQUAL:
                             list->clear();
+                            list->add(field);
+                            break;
                         case QTP_OP_ADD:
                             list->add(field);
                             break;
